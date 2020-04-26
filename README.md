@@ -1,24 +1,21 @@
-# README
+# rails study
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 스터디 Repository입니다.
 
-Things you may want to cover:
+localhost:your_port 에서 확인 가능합니다.
 
-* Ruby version
+## 초기 설정
 
-* System dependencies
+* window에서 진행할 시에 WSL 환경
+* Ruby 설치
+  * Ruby dependency 설치
+  * rbenv 설치
+  * ruby_build 설치
+  * Ruby 설치
+  * Ruby Library 설치
+  * rbenv에 Ruby 등록
 
-* Configuration
+* Rails 설치
+  * Rails dependency 설치 (nodejs)
+  * rbenv에 등록
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
