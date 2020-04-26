@@ -30,11 +30,20 @@ bundle (optional)
 rails s
 > rails 서버 실행
 
+localhost:port_num으로 접속하게 된다면 지구촌 친구들 확인 가능함. 후술 routes.rb 참조
+
 rails generate controller "Controller_name"
 > Controller_name이라는 controller를 생성한다. /app/controllers에서 확인할 수 있으며 matching되는 view 폴더가 /app/view/에 생성됨을 확인할 수 있다.
 
 rails g model "Model_name"
 > Model_name 이라는 model을 생성한다. generate는 g로 줄여서 사용 가능하다. model은 후술 참조
+
+
+**routes.rb**
+routes.rb 파일에서는 어떠한 url이 view와 매칭되는지를 설정한다. 초기에 설정이 없다면 지구촌 친구들을 localhost:3000에서 확인할 수 있다.
+: ex) 초기화면을 /app/view/home/index.html.erb 로 바꾸고 싶다면 Rails.application.routes.draw do 하단에 _roots "home#index"_ 를 추가한다.
+
+만약 /pokemon url과 /pokemon/index.html.erb을 매칭하기 위해서는 _get "/pokemon" => "pokemon#index"_ 추가
 
 ### 참고
 
