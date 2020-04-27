@@ -1,0 +1,24 @@
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT72uO4IBcS2QOgVVEHopIGOkr6ChiJ4qvztrkkrNrOMwd0WC6i&usqp=CAU">
+
+<br>
+<a href="/pokemon/volt">백만 볼트 </a>
+<br>
+
+
+
+
+<%= form_tag("/pokemon/speed", method: "post") do %>
+  <%= label_tag(:hp, "전광석화:") %>
+  <%= text_field_tag(:hp) %>
+  <%= submit_tag("공격") %>
+<% end %>
+
+<br>
+<br><br>
+"이름 :" <%= @poke.name %>
+<br>
+"체력 :" <%= @poke.hp%>
+
+<br><br><br>
+<a href="/..">초기 화면</a>
+<%= link_to "초기 화면 link_to 사용","/.."%>
