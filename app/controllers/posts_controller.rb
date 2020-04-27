@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     end
 
     def edit
-
+        @post=Post.find_by(id: params[:id])
     end
 
     def create
@@ -23,17 +23,20 @@ class PostsController < ApplicationController
     end
 
     def update
-
+        post=Post.find_by(id: params[:id])
+        #post.update params.require(:post).permit(:title, :author, :body)
+        post.update post_params
+        redirect_to post_path(post)
     end
     
     def delete
-        
+       
     end
 
    
     private
     def post_params
         # 가장 마지막 줄을 return 한다. -> return 생략 가능.
-        return params.require(:post).permit(:title,:body)
+        return params.require(:post).permit(:title,:author, :body)
     end
 end
