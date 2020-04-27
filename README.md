@@ -44,6 +44,32 @@ routes.rb 파일에서는 어떠한 url이 view와 매칭되는지를 설정한�
 
 만약 /pokemon url과 /pokemon/index.html.erb을 매칭하기 위해서는 _get "/pokemon" => "pokemon#index"_ 추가
 
+만약 POST 형식으로 사용하고 싶다면 _post "/pokemon" => "pokemon#index"_ 추가
+
+### model
+
+rails g model "model_name" A:integer B:string C
+> model_name이라는 model을 생성한다. 여러 attribute들을 생성할 수 있으며 default 값은 string이다.
+
+##### 위의 명령어를 실행하면 model이 생성되지 않는다. /db/migrate/에 생성된 rb파일이 생성된다.
+
+model의 생성을 바로 진행하는 것이 아니라 migration 파일을 생성한다. 명령서를 생성하고 이를 수행하면서 model이 생성된다고 생각하면 된다.
+
+##### rails db:migrate 를 실행하자
+
+실행 후에는 db 폴더에 schema.rb 파일이 생성된 것을 볼 수 있으며, 생성한 model의 정보를 확인할 수 있다.
+
+또한 /app/model/ 에 해당 모델.rb 파일의 생성을 확인할 수 있다.
+
+### action과 db
+
+어떠한 view를 controll할 수 있는 action이 controller에 function으로 존재해야한다.
+> ex) index.html.erb를 controll할 수 있는 index function 필요
+
+변수는 @value와 같이 사용하고 find_by와 같은 function으로 접근한다.
+
+@value.save로 db에 저장할 수 있다.
+
 ### 참고
 
 * https://guides.rubyonrails.org/getting_started.html
