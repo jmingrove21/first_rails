@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get "/pokemon" => "pokemon#index"
   get "/pokemon/volt" => "pokemon#volt"
   post "/pokemon/speed" => "pokemon#speed"
+
+  resources :posts
 end
