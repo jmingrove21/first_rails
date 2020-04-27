@@ -1,6 +1,14 @@
 <h2>게시판 입니다</h2>
-
+<% if @posts.present?%>
+    <% @posts.each_with_index do |post, index| %>
+        <%= link_to post_path(post) do %>
+            <%= index+1%>/<%= post.title%>/<%=post.author%>/ <%post.body%>
+        <br>
+        <%end%>
+    <%end%>
+<% else %>
+    <h3> 게시물이 없습니다.</h3>
+<% end %>
 
 <%=link_to "글 작성하기", new_post_path %>
-
 <%=link_to "초기화면 가기","/.."%>

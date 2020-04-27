@@ -70,6 +70,38 @@ model의 생성을 바로 진행하는 것이 아니라 migration 파일을 생�
 
 @value.save로 db에 저장할 수 있다.
 
+### CRUD
+* Create : 생성(POST)
+* Read : 조회(GET)
+* Update : 수정(PUT or PATCH)
+* Delete : 삭제(DELETE)
+
+#### Rails에서의 CRUD - 7가지 Action
+
+index, new, create, show, edit, update, delete
+
+* View가 필요한 action
+  * index : model의 모든 instance 보여줌
+  * new : 새로운 instance를 생성하기 위한 form 보여줌
+  * show : 특정 instance를 보여줌(matching되는 id의)
+  * edit : 특정 instance를 수정할 수 있는 form을 보여줌 (id 알아야 함)
+
+* View가 필요하지 않은 action
+  * create : new form을 통해 새로운 instance 생성
+  * update : edit form 기반으로 특정 instance update (id 알아야 함)
+  * delete : db에서 instance 제거 (id 알아야 함)
+
+| **URL** | **HTTP Verb** |  **Action**|
+|------------|-------------|------------|
+| /name/         | GET       | index  
+| /name/new         | GET       | new   
+| /name          | POST      | create   
+| /name/:id      | GET       | show       
+| /name/:id/edit | GET       | edit       
+| /name/:id      | PATCH/PUT | update    
+| /name/:id      | DELETE    | destroy  
+
 ### 참고
 
 * https://guides.rubyonrails.org/getting_started.html
+* https://medium.com/adventures-in-code/snow-white-the-7-restful-routes-afcf87bbe5bd

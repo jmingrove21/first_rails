@@ -1,15 +1,20 @@
 class PostsController < ApplicationController
     #CRUD 7가지. index, new, show, edit, create, update, delete
     def index
+        @posts=Post.all
+        #모든 게시물들을 다 가지고 온다.
     end
 
     def new
+
     end
 
     def show
+        @post=Post.find_by(id: params[:id])
     end
 
     def edit
+
     end
 
     def create
@@ -18,9 +23,11 @@ class PostsController < ApplicationController
     end
 
     def update
+
     end
     
     def delete
+        
     end
 
    
