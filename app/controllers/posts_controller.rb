@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    #CRUD 7가지. index, new, show, edit, create, update, delete
+    #CRUD 7가지. index, new, show, edit, create, update, destroy
     def index
         @posts=Post.all
         #모든 게시물들을 다 가지고 온다.
@@ -29,8 +29,10 @@ class PostsController < ApplicationController
         redirect_to post_path(post)
     end
     
-    def delete
-       
+    def destroy
+       post=Post.find_by(id: params[:id])
+       post.destroy
+       redirect_to post_path()
     end
 
    

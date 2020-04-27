@@ -78,7 +78,7 @@ model의 생성을 바로 진행하는 것이 아니라 migration 파일을 생�
 
 #### Rails에서의 CRUD - 7가지 Action
 
-index, new, create, show, edit, update, delete
+index, new, create, show, edit, update, destroy
 
 * View가 필요한 action
   * index : model의 모든 instance 보여줌
@@ -89,7 +89,7 @@ index, new, create, show, edit, update, delete
 * View가 필요하지 않은 action
   * create : new form을 통해 새로운 instance 생성
   * update : edit form 기반으로 특정 instance update (id 알아야 함)
-  * delete : db에서 instance 제거 (id 알아야 함)
+  * destroy : db에서 instance 제거 (id 알아야 함)
 
 | **URL** | **HTTP Verb** |  **Action**|
 |------------|-------------|------------|
