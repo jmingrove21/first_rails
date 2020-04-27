@@ -13,6 +13,8 @@ class PostsController < ApplicationController
     end
 
     def create
+        post=Post.create params.require(:post).permit(:title,:body,:author)
+        redirect_to post_path(post)
     end
 
     def update
@@ -20,5 +22,11 @@ class PostsController < ApplicationController
     
     def delete
     end
-    
+
+   
+    private
+    def post_params
+        # 가장 마지막 줄을 return 한다. -> return 생략 가능.
+        return params.require(:post).permit(:title,:body)
+    end
 end
