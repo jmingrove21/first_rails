@@ -101,7 +101,33 @@ index, new, create, show, edit, update, destroy
 | /name/:id      | PATCH/PUT | update    
 | /name/:id      | DELETE    | destroy  
 
+### Delete Action(Put, Patch)
+
+show, update, destroy action은 모두 동일한 path를 사용하지만, 각각의 format에 따라 action이 다르게 변한다. 따라서 action에 맞는 format을 설정해줄 필요가 있다
+
+> 따라서 jquery를 사용해야 했다
+
+#### jquery 사용법
+
+1. application.js에 jquery와 jquery-ui를 추가해주어야 한다.
+>```
+>//= require jquery
+>//= require jquery-ui
+>```
+
+2. Gemfile에도 설치를 위해 지정해주어야 한다.
+
+>```
+>gem 'jquery-rails'
+>gem 'jquery-ui-rails'
+>```
+
+3. Gemfile에 지정된 내용(jquery)를 설치하기 위해 'bundle' or 'bundle install'를 실행한다.
+
+##### <%= link_to "삭제", post_path(post), method: :delete %> 와 같이 사용하면 된다
+
 ### 참고
 
 * https://guides.rubyonrails.org/getting_started.html
 * https://medium.com/adventures-in-code/snow-white-the-7-restful-routes-afcf87bbe5bd
+* https://github.com/rails/jquery-rails
