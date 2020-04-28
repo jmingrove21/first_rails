@@ -101,7 +101,7 @@ index, new, create, show, edit, update, destroy
 | /name/:id      | PATCH/PUT | update    
 | /name/:id      | DELETE    | destroy  
 
-### Delete Action(Put, Patch)
+### Destroy Action(Put, Patch)
 
 show, update, destroy action은 모두 동일한 path를 사용하지만, 각각의 format에 따라 action이 다르게 변한다. 따라서 action에 맞는 format을 설정해줄 필요가 있다
 
