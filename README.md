@@ -126,8 +126,15 @@ show, update, destroy action은 모두 동일한 path를 사용하지만, 각각
 
 ##### <%= link_to "삭제", post_path(post), method: :delete %> 와 같이 사용하면 된다
 
+### .erb : Ruby의 템플릿 엔진
+
+ERB를 사용하면 루비 코드의 값을 포함하는 문서를 만들 수 있다. index.html에 ruby 코드를 넣고 싶다면 index.html.erb로 파일명을 변경한 후 <% %>, <%= %>와 같은 태그를 이용해 사용한다.
+자세한건 참고항목의 erb관련 url참고. 
+
 ### 참고
 
 * https://guides.rubyonrails.org/getting_started.html
 * https://medium.com/adventures-in-code/snow-white-the-7-restful-routes-afcf87bbe5bd
 * https://github.com/rails/jquery-rails
+* https://www.joinc.co.kr/w/Site/Ruby/ERB (erb)
+* https://flearning-blog.tistory.com/38 (erb파일에서 <% %>, <%= %>)
