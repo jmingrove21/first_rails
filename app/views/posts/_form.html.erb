@@ -1,0 +1,21 @@
+<%post||=nil%>
+<% if post%>
+    <%= form_for post do |f| %>
+        <%=f.label :title%>
+        <%=f.text_field :title %>
+        <br>
+        <br>
+
+        <%=f.label :body%>
+        <%=f.text_area :body%>
+        <br>
+        <br>
+
+        <%=f.label :author%>
+        <%=f.text_field :author%>
+        <br>
+        <br>
+        <%= f.hidden_field :user_id, value: current_user&.id%>
+        <%=f.submit "제출"%>
+    <%end%>
+<%end%>

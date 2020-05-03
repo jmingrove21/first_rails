@@ -1,7 +1,17 @@
 <h2> Rails 연습 </h2>
 
-<h4>* Pokemon <h4>
+<h4>* Pokemon - 2강 <h4>
 <a href="/pokemon">바로가기</a>
 <br><br>
-<h4>* Posts Site </h4>
+<h4>* Posts Site - 3강 </h4>
 <a href="/posts">바로가기</a>
+
+<br><br>
+<h4>* 로그인, 관리자 - 4강 </h4>
+
+<% if current_user %>  
+    <%=link_to "게시물 확인하기", my_posts_path %>
+    <%=link_to "로그아웃_바로가기", destroy_user_session_path, method: :delete %>
+<%else%>
+    <%=link_to "로그인_바로가기", new_user_session_path %>
+<%end%>

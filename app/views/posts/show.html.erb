@@ -6,5 +6,8 @@
 <br>
 "내용 : " <%= @post.body%>
 <br>
-
-<%= link_to "뒤로가기", posts_path%>
+<br>
+author: <%= @post.user&.email %>
+<br>
+<br>
+<%= link_to "뒤로가기", posts_path %>
