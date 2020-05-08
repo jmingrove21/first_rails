@@ -56,6 +56,7 @@ rails g model "Model_name"
 #### routes.rb
 
 routes.rb 파일에서는 어떠한 url이 view와 매칭되는지를 설정한다. 초기에 설정이 없다면 지구촌 친구들을 localhost:3000에서 확인할 수 있다.
+
 : ex) 초기화면을 /app/view/home/index.html.erb 로 바꾸고 싶다면 Rails.application.routes.draw do 하단에 _roots "home#index"_ 를 추가한다.
 
 만약 /pokemon url과 /pokemon/index.html.erb을 매칭하기 위해서는 _get "/pokemon" => "pokemon#index"_ 추가
@@ -145,6 +146,7 @@ show, update, destroy action은 모두 동일한 path를 사용하지만, 각각
 ### .erb : Ruby의 템플릿 엔진
 
 ERB를 사용하면 루비 코드의 값을 포함하는 문서를 만들 수 있다. index.html에 ruby 코드를 넣고 싶다면 index.html.erb로 파일명을 변경한 후 <% %>, <%= %>와 같은 태그를 이용해 사용한다.
+
 자세한건 참고항목의 erb관련 url참고. 
 
 ### Partial
