@@ -19,6 +19,22 @@ localhost:your_port 에서 확인 가능합니다.
   * Rails dependency 설치 (nodejs)
   * rbenv에 등록
 
+### 실행
+
+> ```
+> bundle
+> yarn install
+> rails db:migrate
+> ```
+
+##### Pokemon error!
+
+> ```
+> rails c
+> Pokemon.create name : "Pikachu", hp:100
+> ```
+
+
 ### 기초
 
 rails new "Project_name"
