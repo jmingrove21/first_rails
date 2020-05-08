@@ -163,7 +163,15 @@ Rails에서는 Partial을 두어 이러한 중복성을 방지하고 재사용�
 
 ( ex) <%=render "form", post:Post.new %>)
 
+### Devise - 인증 솔루션
 
+설명 : Devise is a flexible authentication solution for Rails based on Warden.
+
+Warden : Warden provides a mechanism for authentication in Rack based Ruby applications.
+
+https://github.com/heartcombo/devise 참고해서 진행하기
+
+Gemfile에 추가(gem 'devise') -> bundle install -> rails g devise:install -> rails g devise MODEL -> rails db:migrate
 
 ### 참고
 
@@ -172,3 +180,4 @@ Rails에서는 Partial을 두어 이러한 중복성을 방지하고 재사용�
 * https://github.com/rails/jquery-rails
 * https://www.joinc.co.kr/w/Site/Ruby/ERB (erb)
 * https://flearning-blog.tistory.com/38 (erb파일에서 <% %>, <%= %>)
+* https://github.com/heartcombo/devise
