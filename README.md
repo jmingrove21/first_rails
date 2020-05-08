@@ -147,6 +147,24 @@ show, update, destroy action은 모두 동일한 path를 사용하지만, 각각
 ERB를 사용하면 루비 코드의 값을 포함하는 문서를 만들 수 있다. index.html에 ruby 코드를 넣고 싶다면 index.html.erb로 파일명을 변경한 후 <% %>, <%= %>와 같은 태그를 이용해 사용한다.
 자세한건 참고항목의 erb관련 url참고. 
 
+### Partial
+
+비슷한 View를 가지는 경우가 있다. 이럴 경우 코드의 중복성이 올라가고 View를 수정해야 하는 경우 일일이 수정해야 하는 번거로움이 있다.
+
+Rails에서는 Partial을 두어 이러한 중복성을 방지하고 재사용성을 높여 수정 시 용이성을 제공할 수 있다.
+
+#### 사용 방법
+
+1. Partial 을 진행할 파일을 _name.html.erb 라는 이름으로 생성한다.(ex) _form.html.erb)
+
+2. view를 작성하고, patameter를 두어야 하는 부분은 변수명을 이용해 생성한다 (ex) post)
+
+3. view를 사용할 때에는 render를 이용하여 form과 변수들을 지정한다.)
+
+( ex) <%=render "form", post:Post.new %>)
+
+
+
 ### 참고
 
 * https://guides.rubyonrails.org/getting_started.html
