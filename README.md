@@ -175,6 +175,18 @@ https://github.com/heartcombo/devise 참고해서 진행하기
 
 Gemfile에 추가(gem 'devise') -> bundle install -> rails g devise:install -> rails g devise MODEL -> rails db:migrate
 
+**current_user**를 통해 사용자가 로그인이 되어있는지를 확인할 수 있다.
+
+### ActionAdmin - 관리자 UI 제공 FW
+
+설명 : Active Admin is a framework for creating administration style interfaces.
+
+https://github.com/heartcombo/devise 참고해서 진행하기
+
+Gemfile에 추가(gem 'activeadmin') -> bundle install -> rails g active_admin:install->  rails db:migrate
+
+참고 : Admin에서 관리할 내용들을 app/admin에 넣어주어야 한다. 파일을 생성해두어야 함.
+
 ### 참고
 
 * https://guides.rubyonrails.org/getting_started.html
@@ -182,4 +194,5 @@ Gemfile에 추가(gem 'devise') -> bundle install -> rails g devise:install -> r
 * https://github.com/rails/jquery-rails
 * https://www.joinc.co.kr/w/Site/Ruby/ERB (erb)
 * https://flearning-blog.tistory.com/38 (erb파일에서 <% %>, <%= %>)
-* https://github.com/heartcombo/devise
+* https://github.com/heartcombo/devise (Devise gem framework)
+* https://activeadmin.info/documentation.html (ActionAdmin gem framework)
