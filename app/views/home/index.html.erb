@@ -23,8 +23,15 @@
     <h1 class="text-white">안녕하세요 <%= current_user ? current_user.email : "guest" %>!  </h1>
     <p class="mb-5">교육용 블로그 샘플입니다.</p>
     <%= link_to "게시글 보러 가기", posts_path, class: "btn btn-primary btn-sm text-white" %>
+    <br><br>
+    <div id="counter" >1</div>
+    <br>
+    <div class="btn btn-info" id="plus">+</div>
+    <div class="btn btn-info" id="minus">-</div>
   </div>
 </div>
+
+
 <div class="container my-5">
   <div class="row px-3 mb-3">
     <h2> 최근 게시글 </h2>
@@ -83,3 +90,10 @@
     <%end%>
   </div>
 </div>
+<script>
+  $("#plus").click(function () {
+    var p=parseInt($("#counter").textContent);
+    p=p+1;
+    $("#counter").value(p);
+  });
+</script>
