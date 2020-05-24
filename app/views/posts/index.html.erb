@@ -4,9 +4,10 @@
         <%= link_to post_path(post) do %>
             <%= index+1%>/<%= post.title%>/<%=post.author%>/ <%post.body%>
         <%end%>
- 
-            <%= link_to "수정", edit_post_path(post)%>
-            <%= link_to "삭제", post_path(post), method: :delete %>
+            <%if current_user%>
+                <%= link_to "수정", edit_post_path(post)%>
+                <%= link_to "삭제", post_path(post), method: :delete %>
+            <%end%>
         <br>
     <%end%>
 <% else %>

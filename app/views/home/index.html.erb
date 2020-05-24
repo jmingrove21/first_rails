@@ -20,7 +20,7 @@
 
 <div class="hero-image">
   <div class="hero-text">
-    <h1 class="text-white">샘플</h1>
+    <h1 class="text-white">안녕하세요 <%= current_user ? current_user.email : "guest" %>!  </h1>
     <p class="mb-5">교육용 블로그 샘플입니다.</p>
     <%= link_to "게시글 보러 가기", posts_path, class: "btn btn-primary btn-sm text-white" %>
   </div>
@@ -64,7 +64,7 @@
               <%if post.user&.email%>
                 <%= post.user&.email %>
               <%else%>
-                <%="작가미상"%>
+                <%="guest"%>
               <%end%>
             </div>
             <div class="col-md-2">
