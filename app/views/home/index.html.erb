@@ -92,8 +92,14 @@
 </div>
 <script>
   $("#plus").click(function () {
-    var p=parseInt($("#counter").textContent);
+    var p=parseInt($("#counter").text());
     p=p+1;
-    $("#counter").value(p);
+    $("#counter").text(p);
   });
+    $("#minus").click(function () {
+    var p=parseInt($("#counter").text());
+    p=p-1;
+    $("#counter").text(p);
+  });
+
 </script>
