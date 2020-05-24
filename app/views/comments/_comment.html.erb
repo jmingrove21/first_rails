@@ -1,0 +1,13 @@
+<% if comment.present?%>
+    <% comment.each_with_index do |c, index| %>
+        <%= link_to comments_path(c) do %>
+            <%= index+1%> / <%=c.body%>
+        <%end%>
+        
+            <%= link_to "수정", edit_comment_path(c)%>
+            <%= link_to "삭제", comment_path(c), method: :delete %>
+        <br>
+    <%end%>
+<% else %>
+    <h4> 댓글이 없습니다.</h4>
+<% end %>

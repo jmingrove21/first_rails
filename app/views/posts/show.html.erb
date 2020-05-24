@@ -10,4 +10,8 @@
 author: <%= @post.user&.email %>
 <br>
 <br>
+
+
+<%= render 'comments/comment', comment:@post.comments%>
+<%=render 'comments/form', comment: Comment.new, post:@post, user: current_user%>
 <%= link_to "뒤로가기", posts_path %>

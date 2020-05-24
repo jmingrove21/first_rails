@@ -1,17 +1,85 @@
-<h2> Rails 연습 </h2>
+<style>
+  .hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1428353077903-d09b3e000f37?ixlib=rb-1.2.1&auto=format&fit=crop&w=2247&q=80');
+    height: 350px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
 
-<h4>* Pokemon - 2강 <h4>
-<a href="/pokemon">바로가기</a>
-<br><br>
-<h4>* Posts Site - 3강 </h4>
-<a href="/posts">바로가기</a>
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+</style>
 
-<br><br>
-<h4>* 로그인, 관리자 - 4강 </h4>
-
-<% if current_user %>  
-    <%=link_to "게시물 확인하기", my_posts_path %>
-    <%=link_to "로그아웃_바로가기", destroy_user_session_path, method: :delete %>
-<%else%>
-    <%=link_to "로그인_바로가기", new_user_session_path %>
-<%end%>
+<div class="hero-image">
+  <div class="hero-text">
+    <h1 class="text-white">샘플</h1>
+    <p class="mb-5">교육용 블로그 샘플입니다.</p>
+    <%= link_to "게시글 보러 가기", posts_path, class: "btn btn-primary btn-sm text-white" %>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="row px-3 mb-3">
+    <h2> 최근 게시글 </h2>
+  </div>
+  
+  <div class="list-group">
+    <% if @posts.present?%>
+      <div class="list-group-item list-group-item-action bg-light">
+        <div class="row text-center">
+          <div class="col-md-3">
+            제목
+          </div>
+          <div class="col-md-5">  
+            내용
+          </div>
+          <div class="col-md-2">
+            작성자
+          </div>
+          <div class="col-md-2">
+            수정/삭제
+          </div>
+      </div>
+      <% @posts.each do |post|%>
+        <div class="list-group-item list-group-item-action">
+          <div class="row">
+            <div class="col-md-3">
+              <%= link_to post_path(post) do%>
+                <%=post.title%>
+              <%end%>
+            </div>
+            <div class="col-md-5"> 
+              <%= link_to post_path(post) do%>
+               <%= truncate post.body%>
+              <%end%>
+            </div>
+            <div class="col-md-2"> 
+              <%if post.user&.email%>
+                <%= post.user&.email %>
+              <%else%>
+                <%="작가미상"%>
+              <%end%>
+            </div>
+            <div class="col-md-2">
+              <% if current_user ==post.user && current_user!=nil%>
+                <%=link_to "수정", edit_post_path(post)%> / 
+                <%=link_to "삭제", post_path(post), method: :delete%> 
+              <%end%>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    <% else %>
+      <div class="list-group-item list-group-item-action">
+        <h3>게시글이 없습니다.</h3>
+      </div>
+    <%end%>
+  </div>
+</div>

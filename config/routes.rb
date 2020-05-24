@@ -10,12 +10,14 @@ Rails.application.routes.draw do
   post "/pokemon/speed" => "pokemon#speed"
 
   # get "/posts/my" => "posts#my"
+  
   resources :posts do
     collection do
       get :my
     end
-    member do
-    
+    member do  
     end
   end
+
+  resources :comments
 end
