@@ -2,7 +2,7 @@
 <% post ||= nil %>
 <% user ||= nil %>
 <% if comment && post && user %>
-  <%= form_for comment do |c|%>
+  <%= form_for comment, remote: true do |c|%>
     <%= c.label :body %>
     <%= c.text_area :body %>
     <br><br>
