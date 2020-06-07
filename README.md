@@ -19,6 +19,22 @@ localhost:your_port 에서 확인 가능합니다.
   * Rails dependency 설치 (nodejs)
   * rbenv에 등록
 
+### 실행
+
+> ```
+> bundle
+> yarn install
+> rails db:migrate
+> ```
+
+##### Pokemon error!
+
+> ```
+> rails c
+> Pokemon.create name : "Pikachu", hp:100
+> ```
+
+
 ### 기초
 
 rails new "Project_name"
@@ -40,6 +56,7 @@ rails g model "Model_name"
 #### routes.rb
 
 routes.rb 파일에서는 어떠한 url이 view와 매칭되는지를 설정한다. 초기에 설정이 없다면 지구촌 친구들을 localhost:3000에서 확인할 수 있다.
+
 : ex) 초기화면을 /app/view/home/index.html.erb 로 바꾸고 싶다면 Rails.application.routes.draw do 하단에 _roots "home#index"_ 를 추가한다.
 
 만약 /pokemon url과 /pokemon/index.html.erb을 매칭하기 위해서는 _get "/pokemon" => "pokemon#index"_ 추가
@@ -129,7 +146,46 @@ show, update, destroy action은 모두 동일한 path를 사용하지만, 각각
 ### .erb : Ruby의 템플릿 엔진
 
 ERB를 사용하면 루비 코드의 값을 포함하는 문서를 만들 수 있다. index.html에 ruby 코드를 넣고 싶다면 index.html.erb로 파일명을 변경한 후 <% %>, <%= %>와 같은 태그를 이용해 사용한다.
+
 자세한건 참고항목의 erb관련 url참고. 
+
+### Partial
+
+비슷한 View를 가지는 경우가 있다. 이럴 경우 코드의 중복성이 올라가고 View를 수정해야 하는 경우 일일이 수정해야 하는 번거로움이 있다.
+
+Rails에서는 Partial을 두어 이러한 중복성을 방지하고 재사용성을 높여 수정 시 용이성을 제공할 수 있다.
+
+#### 사용 방법
+
+1. Partial 을 진행할 파일을 _name.html.erb 라는 이름으로 생성한다.(ex) _form.html.erb)
+
+2. view를 작성하고, patameter를 두어야 하는 부분은 변수명을 이용해 생성한다 (ex) post)
+
+3. view를 사용할 때에는 render를 이용하여 form과 변수들을 지정한다.)
+
+( ex) <%=render "form", post:Post.new %>)
+
+### Devise - 인증 솔루션
+
+설명 : Devise is a flexible authentication solution for Rails based on Warden.
+
+Warden : Warden provides a mechanism for authentication in Rack based Ruby applications.
+
+https://github.com/heartcombo/devise 참고해서 진행하기
+
+Gemfile에 추가(gem 'devise') -> bundle install -> rails g devise:install -> rails g devise MODEL -> rails db:migrate
+
+**current_user**를 통해 사용자가 로그인이 되어있는지를 확인할 수 있다.
+
+### ActionAdmin - 관리자 UI 제공 FW
+
+설명 : Active Admin is a framework for creating administration style interfaces.
+
+https://github.com/heartcombo/devise 참고해서 진행하기
+
+Gemfile에 추가(gem 'activeadmin') -> bundle install -> rails g active_admin:install->  rails db:migrate
+
+참고 : Admin에서 관리할 내용들을 app/admin에 넣어주어야 한다. 파일을 생성해두어야 함.
 
 ### 참고
 
@@ -138,3 +194,5 @@ ERB를 사용하면 루비 코드의 값을 포함하는 문서를 만들 수 �
 * https://github.com/rails/jquery-rails
 * https://www.joinc.co.kr/w/Site/Ruby/ERB (erb)
 * https://flearning-blog.tistory.com/38 (erb파일에서 <% %>, <%= %>)
+* https://github.com/heartcombo/devise (Devise gem framework)
+* https://activeadmin.info/documentation.html (ActionAdmin gem framework)

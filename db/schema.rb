@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_05_24_073130) do
 
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_05_24_073130) do
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
+
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
