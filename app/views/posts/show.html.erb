@@ -6,5 +6,12 @@
 <br>
 "내용 : " <%= @post.body%>
 <br>
+<br>
+author: <%= @post.user&.email %>
+<br>
+<br>
+<%=render 'comments/form', comment: Comment.new, post:@post, user: current_user%>
+<br>
 
-<%= link_to "뒤로가기", posts_path%>
+<%= render 'comments/comments', comments: @post.comments.order(created_at: :desc) %>
+<%= link_to "뒤로가기", posts_path %>
