@@ -4,8 +4,11 @@ class LikeController < ApplicationController
 		
 		if like.present?
 			like.destroy
+			#redirect_to post_path(params[:post_id])
 		else
 			Like.create like_params
+			#redirect_to post_path(params[:post_id])
+
 		end
 	end
 	private
