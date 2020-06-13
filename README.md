@@ -181,11 +181,13 @@ Gemfile에 추가(gem 'devise') -> bundle install -> rails g devise:install -> r
 
 설명 : Active Admin is a framework for creating administration style interfaces.
 
-https://github.com/heartcombo/devise 참고해서 진행하기
+https://activeadmin.info/0-installation.html 참고해서 진행하기
 
 Gemfile에 추가(gem 'activeadmin') -> bundle install -> rails g active_admin:install->  rails db:migrate
 
-참고 : Admin에서 관리할 내용들을 app/admin에 넣어주어야 한다. 파일을 생성해두어야 함.
+참고1 : Admin에서 관리할 내용들을 app/admin에 넣어주어야 한다. 파일을 생성해두어야 함.
+
+참고2 : AdminUser.create!(:email=>'email_format', :password => 'password', :password_cofirmation => 'password') 와 같이 rails c (console)에서 추가할 수 있다.
 
 ### Render
 
