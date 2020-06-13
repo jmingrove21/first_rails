@@ -44,8 +44,11 @@
           <div class="col-md-3">
             제목
           </div>
-          <div class="col-md-5">  
+          <div class="col-md-4">  
             내용
+          </div>
+          <div class="col-md-1">
+            추천
           </div>
           <div class="col-md-2">
             작성자
@@ -62,10 +65,13 @@
                 <%=post.title%>
               <%end%>
             </div>
-            <div class="col-md-5"> 
+            <div class="col-md-4"> 
               <%= link_to post_path(post) do%>
                <%= truncate post.body%>
               <%end%>
+            </div>
+            <div class="col-md-1">
+              <%=Like.where(post_id:post.id).size%>
             </div>
             <div class="col-md-2"> 
               <%if post.user&.email%>
