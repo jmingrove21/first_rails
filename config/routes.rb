@@ -17,12 +17,13 @@ Rails.application.routes.draw do
     end
     member do  
     end
+    resources :like do
+      collection do
+        get :check
+      end
+    end
   end
 
   resources :comments
-  resources :like do
-    collection do
-      get :check 
-    end
-  end
+ 
 end
