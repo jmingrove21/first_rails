@@ -187,6 +187,11 @@ Gemfile에 추가(gem 'activeadmin') -> bundle install -> rails g active_admin:i
 
 참고 : Admin에서 관리할 내용들을 app/admin에 넣어주어야 한다. 파일을 생성해두어야 함.
 
+### Render
+
+### Migration 파일 관리하
+
+
 ### 참고
 
 * https://guides.rubyonrails.org/getting_started.html
