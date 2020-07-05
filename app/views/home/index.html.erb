@@ -96,6 +96,76 @@
     <%end%>
   </div>
 </div>
+<div class="container my-5">
+  <div class="row px-3 mb-3">
+    <h2> 좋아요 게시글 </h2>
+  </div>
+  <% if @current_user.present?%>
+    <div class="list-group">
+      <% if @posts.present?%>
+        <div class="list-group-item list-group-item-action bg-light">
+          <div class="row text-center">
+            <div class="col-md-3">
+              제목
+            </div>
+            <div class="col-md-4">  
+              내용
+            </div>
+            <div class="col-md-1">
+              추천
+            </div>
+            <div class="col-md-2">
+              작성자
+            </div>
+            <div class="col-md-2">
+              좋아요 해제
+            </div>
+        </div>
+        <% @posts.each do |post|%>
+          <div class="list-group-item list-group-item-action">
+            <div class="row">
+              <div class="col-md-3">
+                <%= link_to post_path(post) do%>
+                  <%=post.title%>
+                <%end%>
+              </div>
+              <div class="col-md-4"> 
+                <%= link_to post_path(post) do%>
+                <%= truncate post.body%>
+                <%end%>
+              </div>
+              <div class="col-md-1">
+                <%=Like.where(post_id:post.id).size%>
+              </div>
+              <div class="col-md-2"> 
+                <%if post.user&.email%>
+                  <%= post.user&.email %>
+                <%else%>
+                  <%="guest"%>
+                <%end%>
+              </div>
+              <div class="col-md-2">
+                <% if current_user ==post.user && current_user!=nil%>
+                  <%=link_to "수정", edit_post_path(post)%> / 
+                  <%=link_to "삭제", post_path(post), method: :delete%> 
+                <%end%>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      <% else %>
+        <div class="list-group-item list-group-item-action">
+          <h3>게시글이 없습니다.</h3>
+        </div>
+      <%end%>
+    </div> 
+  <% else%>
+    <h5> 로그인이 필요합니다. </h5>
+  <% end %>
+  
+  
+  
+</div>
 <script>
   $("#plus").click(function () {
     var p=parseInt($("#counter").text());

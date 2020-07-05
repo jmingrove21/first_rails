@@ -14,6 +14,10 @@
         <%=f.label :author%>
         <%=f.text_field :author%>
         <br>
+        <%= f.fields_for :images do |ff|%>
+            <%= ff.label :image%>
+            <%= ff.file_field :image, class: "form-control"%>
+        <%end%>
         <br>
         <%= f.hidden_field :user_id, value: current_user&.id%>
         <%=f.submit "제출"%>

@@ -8,7 +8,10 @@ class PostsController < ApplicationController
     end
 
     def new
-
+        @post =Post.new
+        3.times.each do
+            @post.images.build
+        end
     end
 
     def show
@@ -29,7 +32,7 @@ class PostsController < ApplicationController
         
         #post.update params.require(:post).permit(:title, :author, :body)
         @post.update post_params
-        redirect_to post_path(post)
+        redirect_to post_path(@post)
     end
     
     def destroy
@@ -44,7 +47,7 @@ class PostsController < ApplicationController
     private
     def post_params
         # 가장 마지막 줄을 return 한다. -> return 생략 가능.
-        return params.require(:post).permit(:title,:author, :body, :user_id)
+        return params.require(:post).permit(:title,:author, :body, :user_id, images_attributes: [:image])
     end
 
     def load_object

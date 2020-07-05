@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :nullify
   has_many :likes
   has_many :like_posts, through: :likes, source: :post
+
+  mount_uploader :image, ImageUploader
 end
