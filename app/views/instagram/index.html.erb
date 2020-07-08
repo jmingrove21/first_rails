@@ -4,21 +4,39 @@
     display:flex;
   }
   .content-item {
-    width: 750px;
+    width: 700px;
     display: flex;
     flex-direction: column;
   }
   .user-item{
-    width : 300px;
+    width : 350px;
     display:flex;
     flex-direction: column;
   }
+  .post_form{
+    margin : 2px auto;
+  }
 </style>
+    <%=%>
+
 <div class ="container">
-  <div class="content-item">
-    ww
+  <div class="content-item" style="background:aqua">
+    <% if @post.size ==0%>
+      <div>
+        게시물이 없습니다.
+      </div>
+    <%else%>
+      <div class=list-group>
+      <%@post.each do |post|%>
+        <div class="list-group-item list-group-item-action bg-light ">
+          <%= render 'form', post: post %>
+        </div>
+      <%end%>
+      </div>
+    <%end%>
+    
   </div>
-  <div class ="user-item">
+  <div class ="user-item" style="background:orange">
     asdfadsf
   <div>
 </div>

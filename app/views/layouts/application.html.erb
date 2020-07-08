@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SampleProject</title>
+    <%if controller_name=="instagram"%>
+      <title>instagram</title>
+    <%else%>
+      <title>First Rails</title>
+    <%end%>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

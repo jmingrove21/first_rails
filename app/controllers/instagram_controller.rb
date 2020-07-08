@@ -1,6 +1,6 @@
 class InstagramController < ApplicationController
 	def index
-	
+		@post=Post.where.not(user_id: current_user.id)
 	end
 
 	def new
