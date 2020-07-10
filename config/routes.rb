@@ -26,6 +26,10 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :instagram
+  resources :instagram do
+    collection do
+      get :check
+    end
+  end
  
 end

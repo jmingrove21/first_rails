@@ -26,4 +26,12 @@ class InstagramController < ApplicationController
 	def show
 	
 	end
+
+	def check
+		if current_user.present?
+			redirect_to destroy_user_session_path, method: delete
+		else
+			redirect_to new_user_session_path
+		end
+    end
 end
