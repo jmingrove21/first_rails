@@ -23,20 +23,25 @@
  
 <div class ="container">
   <div class="content-item" style="background:aqua">
-    <% if @post.size ==0%>
-      <div>
-        게시물이 없습니다.
-      </div>
-    <%else%>
-      <div class=list-group>
-      <%@post.each do |post|%>
-        <div class="list-group-item list-group-item-action bg-light ">
-          <%= render 'form', post: post %>
+    <%if current_user.present?%>
+      <% if @post.size ==0%>
+        <div>
+          게시물이 없습니다.
+        </div>
+      <%else%>
+        <div class=list-group>
+        <%@post.each do |post|%>
+          <div class="list-group-item list-group-item-action bg-light ">
+            <%= render 'form', post: post %>
+          </div>
+        <%end%>
         </div>
       <%end%>
+    <%else%>
+      <div>
+        로그인이 필요합니다.
       </div>
     <%end%>
-    
   </div>
   <div class ="user-item" style="background:orange">
     <div class ="user_section">
@@ -44,7 +49,11 @@
         sdfsdf
       </div>
       <div class ="user_info">
-        <%=current_user.email%>
+        <%if current_user.present?%>
+         <%=current_user.email%>
+        <%else%>
+          로그인이 필요합니다.
+        <%end%>
       </div>
     </div>
   <div>
