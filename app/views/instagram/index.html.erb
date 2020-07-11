@@ -19,10 +19,13 @@
   .user_section{
     margin : 3px auto;
   }
+  .list-group-item{
+    border: 0px;
+  }
 </style>
  
 <div class ="container">
-  <div class="content-item" style="background:aqua">
+  <div class="content-item">
     <%if current_user.present?%>
       <% if @post.size == 0%>
         <div>
@@ -31,8 +34,8 @@
       <%else%>
         <div class=list-group>
         <%@post.each do |post|%>
-          <div class="list-group-item list-group-item-action bg-light ">
-            <%= render 'form', post: post %>
+          <div class="list-group-item">
+            <%= render 'form', post: post, user: User.where(id:post.user_id) %>
           </div>
         <%end%>
         </div>
@@ -46,7 +49,7 @@
   <div class ="user-item" style="background:orange">
     <div class ="user_section">
       <div class ="user_image">
-        sdfsdf
+        유저 이미지 넣을 예정
       </div>
       <div class ="user_info">
         <%if current_user.present?%>
