@@ -1,0 +1,26 @@
+<div>
+    <div>
+        <%=current_user.email%>
+    </div>
+    <br>
+    <div>
+        following : <%=current_user.follows.size%>
+    </div>
+    <div>
+        following list
+        <% current_user.follows.each do |followings| %>
+         <%= User.where(id:followings.user_id)[0].email%>
+         <%end%>
+    </div>
+    <div>
+        follower : <%=current_user.received_follows.size%>
+    </div>
+
+    <div>
+        follower list
+        <% current_user.received_follows.each do |followers| %>
+         <%= User.where(id:followers.user_id)[0].email%>
+         <%end%>
+    </div>
+</div>
+
