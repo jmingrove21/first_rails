@@ -51,7 +51,6 @@
       <div class ="user_info">
         <%if current_user.present?%>
           <%=link_to current_user.email, instagram_path(current_user.id)%> 
-         
         <%else%>
           로그인이 필요합니다.
         <%end%>

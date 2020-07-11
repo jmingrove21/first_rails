@@ -1,34 +1,54 @@
-<div>
-<!-- user info section -->
-    user info
-</div>
-<div>
-<!--post image section -->
-    image
-</div>
-<div>
-    <!--post like,button section -->
-    like button
-</div>
-<div>
-    <!--post like count section -->
-    like : 1
-</div>
+<style>
+    .card-inline-item{
+        display : flex;
+    }
+    .card-item-margin{
+        margin: 0px 2px 0px 2px;
+ 
+    }
+    .card-body-tight{
+        padding : 2px;
+    }
+</style>
 
-<div>
-<!--post description section -->
+<div class="card">
+    <div class="card-title text-left card-inline-item" >
+    <div class="card-item-margin">
+        img 
+    </div>    
+    <div class="card-item-margin">
+        <!-- user info section -->
+        user info
+    </div>
+    </div>
+    <img src="https://img1.daumcdn.net/thumb/R720x0/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fliveboard%2FBoiledMovie%2F53c2391d28a94014adc889fafa8f4640.png" class="card-img">
+    
+    <div class="card-body card-body-tight card-inline-item">
+        <div class="card_item_margin">
+            <!--post like,button section -->
+            like-btn 
+        </div>
+        <div class="card_item_margin">
+            comment-btn
+        </div>
+    </div>
+    <div class="card-body card-body-tight text-left">
+        <!--post like count section -->
+        like : 1
+    </div>
 
-<%= post.title%>    
-<br>
-<br>
-<%= post.body%>
+    <div class="card-text text-left">
+        <!--post description section -->
+        <%= post.body%>
+    </div>
+    <div class = "card-body card-body-tight text-left">
+        <div>
+        <!-- comment input section -->
+            comment input
+        </div>
+        <div>
+        <!-- comment list section -->
+            comment list
+        </div>
+    </div>
 </div>
-<div>
-<!-- comment input section -->
-    comment input
-</div>
-<div>
-<!-- comment list section -->
-    comment list
-</div>
-
