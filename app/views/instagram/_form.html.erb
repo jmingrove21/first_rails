@@ -24,8 +24,11 @@
         <%=user[0].email%>
     </div>
     </div>
-    <img src="https://img1.daumcdn.net/thumb/R720x0/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fliveboard%2FBoiledMovie%2F53c2391d28a94014adc889fafa8f4640.png" class="card-img">
-    
+    <%if post.images.present?%>
+       <img src="<%=post.images[0].image.url%>" class="card-img">
+    <%else%>
+        <img src="image/instagram.png" class="card-img">
+    <%end%>
     <div class="card-body card-body-tight card-inline-item">
         <div class="card_item_margin">
             <!--post like,button section -->
