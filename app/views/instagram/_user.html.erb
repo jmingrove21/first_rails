@@ -1,0 +1,21 @@
+
+
+<% users ||= [] %>
+
+<div class="list-group">
+  <% if users.present? %>
+    <% users.each do |user| %>
+        <div>
+            <%=user.id%>
+        </div>
+        <div>
+            <%=user.email%>
+        </div>
+        <div>
+            <% if user.present?%>
+                <%=render 'follow', user: user%>
+            <%end%>
+        </div>
+    <% end %>
+  <% end %>
+</div>

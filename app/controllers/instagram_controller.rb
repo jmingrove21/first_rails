@@ -1,6 +1,6 @@
 class InstagramController < ApplicationController
 	def index
-		@post=Post.where(user_id: [current_user.follows])
+		@post=Post.where(user_id: [current_user.follows]) if current_user
 	end
 
 	def new
@@ -33,5 +33,25 @@ class InstagramController < ApplicationController
 		else
 			redirect_to new_user_session_path
 		end
+  end
+  
+
+	def check_follow
+		follow=current_user.follows.find_by(target_id: params[:id])
+		
+		if follow.present?
+			follow.destroy
+		else
+			Follow.create follow_params
+
     end
+  end
+  
+  private
+	def follow_params
+		{user_id: current_user.id, target_id:  params[:id]}
+  end
+  
+  
 end
+

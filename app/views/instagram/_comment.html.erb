@@ -1,0 +1,12 @@
+<% comments ||= [] %>
+
+<div class="list-group">
+  <% if comments.present? %>
+    <% comments.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  <% else %>
+    <div class="list-group-item ">
+    </div>
+  <% end %>
+</div>

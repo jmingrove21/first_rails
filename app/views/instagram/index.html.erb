@@ -46,7 +46,7 @@
       </div>
     <%end%>
   </div>
-  <div class ="user-item" style="background:orange">
+  <div class ="user-item">
     <div class ="user_section">
       <div class ="user_image">
         유저 이미지 넣을 예정
@@ -54,6 +54,7 @@
       <div class ="user_info">
         <%if current_user.present?%>
           <%=link_to current_user.email, instagram_path(current_user.id)%> 
+          <%=render 'user', users: User.where.not(id:current_user.id)%>
         <%else%>
           로그인이 필요합니다.
         <%end%>

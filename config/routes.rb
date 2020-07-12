@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :instagram do
     collection do
       get :check
+      get :check_follow
     end
   end
  
