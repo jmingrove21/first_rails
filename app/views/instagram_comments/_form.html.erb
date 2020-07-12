@@ -1,0 +1,11 @@
+<% comment ||= nil %>
+<% post ||= nil %>
+<% user ||= nil %>
+<% if comment && post && user %>
+  <%= form_for comment, remote: true do |c|%>
+    <%= c.text_area :body %>
+    <%=c.hidden_field :post_id, value:post.id %>
+    <%= c.hidden_field :user_id, value: user.id%>
+    <%=c.submit "제출"%>
+  <%end%>
+<%end%>

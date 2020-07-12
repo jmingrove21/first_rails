@@ -52,6 +52,10 @@
         </div>
     </div>
     <div class = "card-text  text-left">
-        <%=render 'comment' , comments: post.comments.order(created_at: :desc)%>
+        <%=render 'instagram_comments/form', comment: Comment.new, post:post, user: current_user%>
+
+    </div>
+    <div class = "card-text  text-left">
+        <%=render 'instagram_comments/comments' , comments: post.comments.order(created_at: :desc)%>
     </div>
 </div>
