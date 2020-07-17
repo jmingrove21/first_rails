@@ -1,8 +1,14 @@
 class InstagramController < ApplicationController
 	def index
-		@post=Post.where(user_id: [current_user.follows]) if current_user
+		if current_user
+			array=Array.new
+			current_user.follows.each do |f|
+				array.push(f.target_id)
+			end			
+			@post=Post.where(user_id:array)
+	
+		end
 	end
-
 	def new
 	
 	end

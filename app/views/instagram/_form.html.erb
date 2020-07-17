@@ -12,36 +12,65 @@
     .text-bold{
         font-weight:bold;
     }
+    .w-8 {
+        width: 8%!important;
+    }
+    .clip-circle-15 {
+        clip-path: circle(15px at center);
+    }
+    .img-div{
+     position: relative;
+     width: 600px;
+     height: 600px;
+     overflow: hidden;
+    }
+    .img-inner{
+     position: absolute;
+     top: -9999px;
+     left: -9999px;
+     right: -9999px;
+     bottom: -9999px;
+     margin: auto;
+    }
 </style>
 
 <div class="card">
     <div class="card-title text-left card-inline-item " >
-    <div class="card-item-margin">
-        img 
-    </div>    
-    <div class="card-item-margin text-bold">
-        <!-- user info section -->
-        <%=user[0].email%>
-    </div>
-    </div>
-    <%if post.images.present?%>
-    <div id="carouselExampleIndicators" class="carousel slide" data-touch="true">
-        <ol class="carousel-indicators">
-            <% post.images.count.times.each do |index| %>
-            <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if (index == 0) %>"></li>
-            <% end %>
-        </ol>
-        <div class="carousel-inner">
-            <% post.images.each_with_index do |image, index| %>
-            <div class="carousel-item <%= 'active' if (index == 0) %>">
-                <img src="<%= image.image %>" class="d-block w-100" alt="">
-            </div>
-            <% end %>
+        <div class="card-item-margin">
+            <div class ="user_image card-inline-item">
+                <%if user[0].image.present?%>
+                    <img src="<%= user[0].image%>" class="d-block w-8 clip-circle-15" alt="">
+                <%else%>
+                    <img src="<%= "image/user.png"%>" class="d-block w-8 clip-circle-15" alt="">
+                <%end%>
+            </div> 
+        </div>    
+        <div class="card-item-margin text-bold">
+            <!-- user info section -->
+            <%=user[0].email%>
         </div>
     </div>
-    <%else%>
-        <img src="image/instagram.png" class="card-img">
-    <%end%>
+    <div>
+        <%if post.images.present?%>
+            <div id="carouselExampleIndicators" class="carousel slide" data-touch="true">
+                <ol class="carousel-indicators">
+                    <% post.images.count.times.each do |index| %>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if (index == 0) %>"></li>
+                    <% end %>
+                </ol>
+                <div class="carousel-inner ">
+                    <% post.images.each_with_index do |image, index| %>
+                    <div class="carousel-item img-div <%= 'active' if (index == 0) %>">
+                        <img src="<%= image.image %>" class="d-block w-100 img-inner" alt="">
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        <%else%>
+            <img src="image/instagram.png" class="card-img">
+        <%end%>
+    </div>
+    
     <div class="card-body card-body-tight card-inline-item">
         <div class="card_item_margin">
             <!--post like,button section -->
