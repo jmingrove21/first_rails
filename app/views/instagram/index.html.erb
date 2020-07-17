@@ -57,7 +57,11 @@
       <div class ="user_info">
         <%if current_user.present?%>
           <div class ="user_image">
-            <img src="<%= current_user.image%>" class="d-block w-20 clip-circle-30" alt="">
+            <%if current_user.image.present?%>
+              <img src="<%= current_user.image%>" class="d-block w-20 clip-circle-30" alt="">
+            <%else%>
+              <img src="<%= "image/user.jpg"%>" class="d-block img-resize-default img-inner clip-circle-15" alt="">
+            <%end%>
           </div>
           <%=link_to current_user.email, instagram_path(current_user.id)%> 
           <%=render 'user', users: User.where.not(id:current_user.id)%>
