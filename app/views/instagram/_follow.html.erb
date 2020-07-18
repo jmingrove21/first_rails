@@ -1,1 +1,0 @@
-<%= link_to current_user.follows.find_by(target_id: user.id).present? ? '<button>unfollow</button>'.html_safe : '<button>follow</button>'.html_safe, check_follow_instagram_index_path(id: user) , remote:true%>
