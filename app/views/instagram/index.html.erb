@@ -28,7 +28,6 @@
     margin : 2px auto;
   }
   .user_section{
-    margin : 3px auto;
   }
   .post-group-item{
     border: 0px;
@@ -49,6 +48,24 @@
   }
   .padding-15{
     padding: 16px 0 16px 0;
+  }
+  .my-user{
+    margin-top:18px;
+    margin-bottom:10px;
+    height:56px;
+    display:flex;
+  }
+  .w-64{
+    width: 64px!important;
+    margin-right:20px;
+  }
+  .my-user-id{
+    align-self:center;
+  }
+  .my-user-id-font{
+    font-weight:600;
+    font-size:14px;
+    color:black;
   }
 </style>
 <div class="total-section">
@@ -78,15 +95,21 @@
       <div class ="user_section">
         <div class ="user_info">
           <%if current_user.present?%>
-            <div class ="user_image">
-              <%if current_user.image.present?%>
-                <img src="<%= current_user.image%>" class="d-block w-20 clip-circle-30" alt="">
-              <%else%>
-                <img src="<%= "image/user.jpg"%>" class="d-block img-resize-default img-inner clip-circle-15" alt="">
-              <%end%>
+            <div class ="my-user">
+              <div class="user_image">
+                <%if current_user.image.present?%>
+                  <img src="<%= current_user.image%>" class="d-block w-64 clip-circle-30" alt="">
+                <%else%>
+                  <img src="<%= "image/user.jpg"%>" class="d-block w-64 clip-circle-30" alt="">
+                <%end%>
+              </div>
+              <div class="my-user-id">
+                <%=link_to current_user.email, instagram_path(current_user.id), class:"my-user-id-font", style: 'color : black'%> 
+              </div>
             </div>
-            <%=link_to current_user.email, instagram_path(current_user.id)%> 
-            <%=render 'user', users: User.where.not(id:current_user.id)%>
+            <div class="user_list">
+              <%=render 'user', users: User.where.not(id:current_user.id)%>
+            </div>
           <%else%>
             로그인이 필요합니다.
           <%end%>
