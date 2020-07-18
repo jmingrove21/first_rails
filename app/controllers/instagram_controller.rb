@@ -4,7 +4,8 @@ class InstagramController < ApplicationController
 			array=Array.new
 			current_user.follows.each do |f|
 				array.push(f.target_id)
-			end			
+			end
+			array.push(current_user.id)
 			@post=Post.where(user_id:array)
 	
 		end

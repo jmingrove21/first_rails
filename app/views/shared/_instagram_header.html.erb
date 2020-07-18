@@ -2,7 +2,7 @@
   .navbar
   {
     border-bottom: 1px solid #0f0f0f36;
-    height :45px;
+    height :54px;
     padding: 0px;
   }
   .nav-search{
@@ -10,12 +10,20 @@
     height: 25px;
 
   }
-  .container{
+  .container-nav{
     height: inherit;
+    text-align: center;
+    width:935px;
+    
+    margin-right: auto;
+    margin-left: auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
   }
 </style>
 <nav class="navbar .navbar-fixed-top">
-  <div class="container">
+  <div class="container-nav">
     <a class="navbar-brand font-weight-bold" href="<%= instagram_index_path%>">
       <h3>instagram</h3>    
     </a>

@@ -1,15 +1,26 @@
 <style>
-  .container {
+  .total-section{
+    background:rgba(var(--b3f,250,250,250),1);
+    min-height:888px;
+  }
+  .content-body{
+    padding-top: 30px;
+    width:fit-content;
     text-align: center;
     display:flex;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
   }
   .content-item {
-    width: 700px;
+    width: 614px;
+    margin-right: 28px;
     display: flex;
     flex-direction: column;
   }
   .user-item{
-    width : 350px;
+    width : 293px;
     display:flex;
     flex-direction: column;
   }
@@ -19,56 +30,68 @@
   .user_section{
     margin : 3px auto;
   }
+  .post-group-item{
+    border: 0px;
+    padding : 0px;
+    margin-bottom:55px;
+  }
   .list-group-item{
     border: 0px;
+    padding : 0px;
+    margin-bottom:4px;
   }
+  
   .clip-circle-30 {
     clip-path: circle(30px at center);
   }
   .w-20 {
     width: 20%!important;
   }
+  .padding-15{
+    padding: 16px 0 16px 0;
+  }
 </style>
- 
-<div class ="container">
-  <div class="content-item">
-    <%if current_user.present?%>
-      <% if @post.size == 0%>
-        <div>
-          게시물이 없습니다.
-        </div>
-      <%else%>
-        <div class=list-group>
-        <%@post.each do |post|%>
-          <div class="list-group-item">
-            <%= render 'form', post: post, user: User.where(id:post.user_id) %>
+<div class="total-section">
+  <div class ="content-body">
+    <div class="content-item">
+      <%if current_user.present?%>
+        <% if @post.size == 0%>
+          <div>
+            게시물이 없습니다.
+          </div>
+        <%else%>
+          <div class=list-group>
+          <%@post.each do |post|%>
+            <div class="post-group-item">
+              <%= render 'form', post: post, user: User.where(id:post.user_id) %>
+            </div>
+          <%end%>
           </div>
         <%end%>
+      <%else%>
+        <div>
+          로그인이 필요합니다.
         </div>
       <%end%>
-    <%else%>
-      <div>
-        로그인이 필요합니다.
-      </div>
-    <%end%>
-  </div>
-  <div class ="user-item">
-    <div class ="user_section">
-      <div class ="user_info">
-        <%if current_user.present?%>
-          <div class ="user_image">
-            <%if current_user.image.present?%>
-              <img src="<%= current_user.image%>" class="d-block w-20 clip-circle-30" alt="">
-            <%else%>
-              <img src="<%= "image/user.jpg"%>" class="d-block img-resize-default img-inner clip-circle-15" alt="">
-            <%end%>
-          </div>
-          <%=link_to current_user.email, instagram_path(current_user.id)%> 
-          <%=render 'user', users: User.where.not(id:current_user.id)%>
-        <%else%>
-          로그인이 필요합니다.
-        <%end%>
-      </div>
     </div>
-  <div>
-</div>
+    <div class ="user-item">
+      <div class ="user_section">
+        <div class ="user_info">
+          <%if current_user.present?%>
+            <div class ="user_image">
+              <%if current_user.image.present?%>
+                <img src="<%= current_user.image%>" class="d-block w-20 clip-circle-30" alt="">
+              <%else%>
+                <img src="<%= "image/user.jpg"%>" class="d-block img-resize-default img-inner clip-circle-15" alt="">
+              <%end%>
+            </div>
+            <%=link_to current_user.email, instagram_path(current_user.id)%> 
+            <%=render 'user', users: User.where.not(id:current_user.id)%>
+          <%else%>
+            로그인이 필요합니다.
+          <%end%>
+        </div>
+      </div>
+    <div>
+  </div>
+</div> 

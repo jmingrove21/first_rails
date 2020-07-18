@@ -2,11 +2,14 @@
 <% post ||= nil %>
 <% user ||= nil %>
 <% if comment && post && user %>
-  <%= form_for comment, remote: true do |c|%>
-    <%= c.text_area :body %>
-    <%= c.hidden_field :post_id, value:post.id %>
-    <%= c.hidden_field :user_id, value: user.id%>
-    <%= hidden_field_tag 'instagram', true %>
-    <%=c.submit "제출"%>
-  <%end%>
+  <div class="comment-form-style">
+    <%= form_for(comment, :html => { :style => 'display:flex;' }, remote: true) do |c|%>
+      <%= c.text_area(:body,class: 'comment-form-body' ,placeholder: "댓글 달기...") %>
+
+      <%= c.hidden_field :post_id, value:post.id %>
+      <%= c.hidden_field :user_id, value: user.id%>
+      <%= hidden_field_tag 'instagram', true %>
+      <%= c.button "제출", :submit => "",  class: "btn comment-submit-button-style" %>
+    <%end%>
+  </div>
 <%end%>
