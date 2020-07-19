@@ -32,6 +32,7 @@ class InstagramController < ApplicationController
 
 	def show
 		@user=load_user
+		@posts=load_post
 	end
 
 	def check
@@ -62,6 +63,8 @@ class InstagramController < ApplicationController
   def load_user
 		User.find_by(id: params[:id])
   end
-  
+  def load_post
+		Post.where(user_id: @user.id)
+  end
 end
 

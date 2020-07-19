@@ -61,6 +61,26 @@
 		font-weight: 600;
     text-align: left;
 	}
+	.grid-container{
+		display: flex;
+ 	 	flex-wrap: wrap;
+  	box-sizing: border-box;
+	}
+	.flex-item {
+  	max-width: 293px;
+  	flex-grow: 1;
+  	height: 293px;
+  	box-sizing: border-box;
+  	margin-right:28px;
+		margin-bottom:28px;
+  	justify-content: space-between;
+  	text-align: center;
+	}
+	.post-image{
+		width:inherit!important;
+		height:inherit;
+	}
+	
 </style>
 <div class="total-section">
 	<div class="userpage-container">
@@ -83,7 +103,7 @@
 						</div>
 						&nbsp;
 						<div class="userpage-userinfo-form-count-each-num">
-							<%=Post.where(id:@user.id).size%>
+							<%=Post.where(user_id:@user.id).size%>
 						</div>
 					</div>
 					<div class="userpage-userinfo-form-count-each">
@@ -115,7 +135,13 @@
 
 		</div>
 		<div>
-				
+				<div class="grid-container">
+					<% @posts.each do |p|%>
+						<div class="flex-item">
+						  <img src="<%= p.images[0].image%>"  class="post-image img-div img-inner" alt="">
+						</div>
+					<%end%>
+				</div>
 		</div>
 	</div>
 </div>
