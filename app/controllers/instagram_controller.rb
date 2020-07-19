@@ -43,12 +43,14 @@ class InstagramController < ApplicationController
 		end
   end
   
-  def view
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
+	def view
+		@post=load_post_by_id
+		@user=load_user_by_post
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
   
 
 	def check_follow
@@ -66,14 +68,18 @@ class InstagramController < ApplicationController
 	def follow_params
 		{user_id: current_user.id, target_id:  params[:id]}
   end
-  
+
   def load_user
 		User.find_by(id: params[:id])
   end
+	def load_user_by_post
+		User.find_by(id: @post.user_id)
+	end
   def load_post
 		Post.where(user_id: @user.id)
   end
-
-  
+  def load_post_by_id
+		Post.find_by(id: params[:id])
+	end
 end
 

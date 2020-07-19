@@ -16,4 +16,9 @@ class User < ApplicationRecord
   has_many :followers, through: :received_follows, source: :user
 
   mount_uploader :image, ImageUploader
+
+
+  def liked? post_id=nil
+    self.likes.find_by(post_id: post_id).present?
+  end
 end
