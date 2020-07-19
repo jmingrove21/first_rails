@@ -31,7 +31,7 @@ class InstagramController < ApplicationController
 	end
 
 	def show
-	
+		@user=load_user
 	end
 
 	def check
@@ -59,6 +59,9 @@ class InstagramController < ApplicationController
 		{user_id: current_user.id, target_id:  params[:id]}
   end
   
+  def load_user
+		User.find_by(id: params[:id])
+  end
   
 end
 

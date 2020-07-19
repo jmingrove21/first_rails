@@ -10,7 +10,8 @@
                 <%end%>
             </div>
             <div class="my-user-follow">
-                <%=user.email%>
+                <%=link_to user.email, instagram_path(user.id), class:"my-user-id-font", style: 'color : black'%> 
+
             </div>
             <div class="my-user-id-follow">
                 <% if user.present?%>
