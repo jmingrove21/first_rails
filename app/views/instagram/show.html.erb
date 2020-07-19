@@ -78,7 +78,7 @@
 		text-align: center;
 	}
 	.post-image{
-		width:inherit!important;
+		width:293px!important;
 		height:inherit;
 	}
 	.img-inner{
@@ -136,19 +136,26 @@
 					myInstaID
 				</div>
 			</div>
-			
 		</div>
 		<div style="height:53px; border-top:1px solid #dbdbdb">
 
 		</div>
 		<div>
-				<div class="grid-container">
-					<% @posts.each do |p|%>
-						<div class="flex-item">
-						  <img src="<%= p.images[0].image%>"  class="post-image img-div img-inner" alt="">
+			<div class="grid-container">
+				<% @posts.each do |p|%>
+					<div class="flex-item">
+						<%= link_to view_instagram_index_path, remote:true, data:{target:'#modal-window',toggle:'modal'} do %>
+							<img src="<%= p.images[0].image%>" class="post-image img-div img-inner">
+						<% end %>
+						<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" area-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+								</div>
+							</div>
 						</div>
-					<%end%>
-				</div>
+					</div>
+				<%end%>
+			</div>
 		</div>
 	</div>
 </div>

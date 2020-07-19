@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     collection do
       get :check
       get :check_follow
+      get :view
     end
   end
  
