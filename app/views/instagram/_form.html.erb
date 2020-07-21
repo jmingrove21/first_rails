@@ -135,10 +135,10 @@
     </div>
     <div>
         <%if post.images.present?%>
-            <div id="carouselExampleIndicators" class="carousel slide" data-touch="true">
+            <div id="carouselExampleIndicators<%=post.id%>" class="carousel slide" data-touch="true">
                 <ol class="carousel-indicators">
                     <% post.images.count.times.each do |index| %>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if (index == 0) %>"></li>
+                        <li data-target="#carouselExampleIndicators<%=post.id%>" data-slide-to="<%= index %>" class="<%= 'active' if (index == 0) %>"></li>
                     <% end %>
                 </ol>
                 <div class="carousel-inner">
@@ -146,7 +146,6 @@
                         <div class="carousel-item img-div <%= 'active' if (index == 0) %>">
                             <img src="<%= image.image %>" class="d-block w-100 img-inner" alt="">
                         </div>
-                        <%= image.image %>
                     <% end %>
                 </div>
             </div>
