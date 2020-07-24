@@ -1,0 +1,184 @@
+<style>
+	.total-section{
+		background:rgba(var(--b3f,250,250,250),1);
+		min-height:888px;
+	}
+	.userpage-container{
+		width:995px;
+		text-align:center;
+		padding-top:30px;
+		padding-right: 30px;
+		padding-left: 30px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.userpage-userinfo{
+		display:flex;
+		height:150px;
+		margin-bottom:44px;
+	}
+	.userpage-userinfo-form-userimg{
+		width:290px;
+		text-align: -webkit-center;
+		margin-right:30px;
+	}
+	.userpage-userinfo-img{
+		width: 150px!important;
+		height:150px;
+	}
+	.userpage-userinfo-img-circle{
+		clip-path: circle(75px at center);
+	}
+	
+	.userpage-userinfo-form-info{
+		margin-top:5px;
+		height:40px;
+		display: block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-weight: 300;
+		font-size: 28px;
+		line-height: 32px;
+		color: #262626;
+		text-align:left;
+	}
+	.userpage-userinfo-form-count{
+		display:flex;
+		height:18px;
+		margin:15px 0 20px 0;
+	}
+	.userpage-userinfo-form-count-each{
+		width:77px;
+		height:18px;
+		margin-right:40px;
+		display:flex;
+	}
+	.userpage-userinfo-form-count-each-num{
+		font-weight:600;
+	}
+	.userpage-userinfo-form-usercomment{
+		font-weight: 600;
+    text-align: left;
+	}
+	.grid-container{
+		display: flex;
+ 	 	flex-wrap: wrap;
+		width:963px;
+  		box-sizing: border-box;
+	}
+	.flex-item {
+		max-width: 293px;
+		flex-grow: 1;
+		height: 293px;
+		box-sizing: border-box;
+		margin-right:28px;
+		margin-bottom:28px;
+		justify-content: space-between;
+		text-align: center;
+	}
+	.post-image{
+		width:293px!important;
+		height:inherit;
+	}
+	.img-inner{
+		top: -9999px;
+		left: -9999px;
+		right: -9999px;
+		bottom: -9999px;
+		margin: auto;
+    }
+	.vertical-alignment-helper {
+		display:table;
+		height: 100%;
+		width: 100%;
+		pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+	}
+	.vertical-align-center {
+		/* To center vertically */
+		display: table-cell;
+		vertical-align: middle;
+		pointer-events:none;
+	}
+	.modal-content {
+		/* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+		width:935px;
+		height:inherit;
+		/* To center horizontally */
+		margin: 0 auto;
+		pointer-events: all;
+	}
+</style>
+<div class="total-section">
+	<div class="userpage-container">
+		<div class="userpage-userinfo">
+			<div class="userpage-userinfo-form-userimg">
+				<%if @user.image.present?%>
+					<img src="<%= @user.image%>" class="d-block userpage-userinfo-img userpage-userinfo-img-circle" alt="">
+				<%else%>
+					<img src="<%= "/image/user.jpg"%>" class="d-block  userpage-userinfo-img userpage-userinfo-img-circle" alt="">
+				<%end%>
+			</div>
+			<div class="userpage-userinfo-form-rightpart">
+				<div class="userpage-userinfo-form-info">
+						<%=@user.email%>
+				</div>
+				<div class="userpage-userinfo-form-count">
+					<div class="userpage-userinfo-form-count-each">
+						<div>
+							게시물 
+						</div>
+						&nbsp;
+						<div class="userpage-userinfo-form-count-each-num">
+							<%=Post.where(user_id:@user.id).size%>
+						</div>
+					</div>
+					<div class="userpage-userinfo-form-count-each">
+						<div>
+							팔로워 
+						</div>
+						&nbsp;
+						<div class="userpage-userinfo-form-count-each-num">
+							<%=@user.follows.size%>
+						</div>
+					</div>
+					<div class="userpage-userinfo-form-count-each">
+						<div>
+							팔로우 
+						</div>
+						&nbsp;
+						<div class="userpage-userinfo-form-count-each-num">
+							<%=@user.received_follows.size%>
+						</div>
+					</div>
+				</div>
+				<div class="userpage-userinfo-form-usercomment">
+					myInstaID
+				</div>
+			</div>
+		</div>
+		<div style="height:53px; border-top:1px solid #dbdbdb">
+
+		</div>
+		<div>
+			<div class="grid-container">
+				<% @posts.each do |p|%>
+					<div class="flex-item">
+						<%= link_to view_instagram_index_path(id: p.id), remote:true, data:{target:'#modal-window',toggle:'modal'} do %>
+							<img src="<%= p.images[0].image%>" class="post-image img-div img-inner">
+						<% end %>
+						<!-- Modal -->
+						<div class="modal fade" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="vertical-alignment-helper" role="document">
+								<div class="modal-dialog vertical-align-center">
+									<div class="modal-content">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<%end%>
+			</div>
+		</div>
+	</div>
+</div>

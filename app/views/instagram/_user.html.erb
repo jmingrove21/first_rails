@@ -1,0 +1,23 @@
+<% users ||= [] %>
+<% if users.present? %>
+    <% users.each do |user| %>
+        <div class="follow-user-list">
+            <div>
+                <%if user.image.present?%>
+                    <img src="<%= user.image%>" class="d-block w-32-m clip-circle-16" alt="">
+                <%else%>
+                    <img src="<%= "image/user.jpg"%>" class="d-block w-32-m clip-circle-16" alt="">
+                <%end%>
+            </div>
+            <div class="my-user-follow">
+                <%=link_to user.email, instagram_path(user.id), class:"my-user-id-font", style: 'color : black'%> 
+
+            </div>
+            <div class="my-user-id-follow">
+                <% if user.present?%>
+                    <%= link_to current_user.follows.find_by(target_id: user.id).present? ? '<div class="my-user-id-font-reco-follow">언팔로우</div>'.html_safe : '<div class="my-user-id-font-reco-follow">팔로우</div>'.html_safe, check_follow_instagram_index_path(id: user) , remote:true%>
+                <%end%>
+            </div>
+        </div>
+    <% end %>
+<% end %>

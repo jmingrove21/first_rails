@@ -1,0 +1,126 @@
+<style>
+    .modal-total-body{
+        width:935px;
+        height:600px;
+        display:flex;
+        padding:0px;
+    }
+    .modal-total-form-img{
+        width:600px;
+        height:600px;
+    }
+    .modal-total-form-info{
+        width:335px;
+        height:72px;
+        padding:16px auto;
+        display:flex;
+    }
+    .modal-total-form-info{
+        padding:16px 16px 16px 16px;
+        border-bottom:1px solid #0f0f0f36;
+
+    }
+    .modal-total-form-info-img{
+
+    }.modal-total-form-info-user{
+        font-size:14px;
+        font-weight:600;
+        align-self:center;
+    }
+    .modal-total-form-content{
+        padding:16px 16px 16px 16px;
+        height:388px;
+        max-height:388px;
+        overflow-y:auto;
+        -ms-overflow-style: none;
+        
+    }
+    .modal-total-form-content::-webkit-scrollbar {
+        display: none;
+    }
+    .modal-total-form-content-body{
+        display: flex;
+        margin-bottom:12px;
+    }
+    .modal-total-form-content-body-style{
+        font-size:14px;
+		font-weight: 300;
+        margin-left:14px;
+        align-self:center;
+    }
+    .modal-total-form-button{
+        height:45px;
+    }
+    .modal-total-form-like{
+        height:30px;
+        margin-bottom:8px;
+    }
+    .modal-total-form-comment{
+        height:56px;
+
+    }
+    .w-40-m{
+    width: 40px!important;
+    margin-right:14px;
+    height:40px;
+    }
+    .clip-circle-16 {
+        clip-path: circle(16px at center);
+    }
+</style>
+
+<div class="modal-body modal-total-body">
+    <div class="modal-total-form-img">
+        <div id="carouselExampleIndicators" class="carousel slide" data-touch="true">
+            <ol class="carousel-indicators">
+                <% @post.images.count.times.each do |index| %>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if (index == 0) %>"></li>
+                <% end %>
+            </ol>
+            <div class="carousel-inner">
+                <% @post.images.each_with_index do |image, index| %>
+                    <div class="carousel-item img-div <%= 'active' if (index == 0) %>">
+                        <img src="<%= image.image %>" class="d-block w-100 img-inner" alt="">
+                    </div>
+                    <%= image.image %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="modal-total-form-info">
+            <div class ="modal-total-form-info-img">
+                <img src="<%= current_user.image%>" class="d-block w-40-m clip-circle-16" alt="">
+
+            </div>
+            <div class ="modal-total-form-info-user">
+                <%=@user.email%>
+            </div>
+        </div>
+        <div class="modal-total-form-content">
+            <div class="modal-total-form-content-body">
+                <div class ="modal-total-form-info-img">
+                    <img src="<%= current_user.image%>" class="d-block w-40-m clip-circle-16" alt="">
+
+                </div>
+                <div class ="modal-total-form-info-user">
+                    <%=@user.email%>
+                </div>
+                <div class="modal-total-form-content-body-style">
+                    <%=@post.body%>
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal-total-form-button">
+        a
+        </div>
+        <div class="modal-total-form-like">
+        b
+        </div>
+        <div class="modal-total-form-comment">
+c
+        </div>
+    </div>
+    
+</div>

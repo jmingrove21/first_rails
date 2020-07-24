@@ -1,0 +1,12 @@
+<% comments ||= [] %>
+
+<div class="list-group-comment card-text">
+  <% if comments.present? %>
+    <% comments.each do |comment| %>
+      <%= render 'instagram_comments/comment', comment: comment %>
+    <% end %>
+  <% else %>
+    
+  <% end %>
+</div>
+

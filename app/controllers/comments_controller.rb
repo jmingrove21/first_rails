@@ -13,13 +13,17 @@ class CommentsController < ApplicationController
     
     def create
       @comment=Comment.create comment_params 
+      if params[:instagram] == "true"
+        render 'instagram_comments/create'
+      else
+        render 'create'
+      end
       #redirect_to post_path(@comment.post)
     end
     def update
       comment=Comment.find_by(id: params[:id])
       comment.update(comment_params)
       redirect_to post_path(comment.post)
-
     end
 
     def destroy

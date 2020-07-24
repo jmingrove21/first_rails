@@ -1,0 +1,46 @@
+<style>
+  .navbar
+  {
+    border-bottom: 1px solid #0f0f0f36;
+    height :54px;
+    padding: 0px;
+  }
+  .nav-search{
+    text-align : center;    
+    height: 25px;
+
+  }
+  .container-nav{
+    height: inherit;
+    text-align: center;
+    width:935px;
+    
+    margin-right: auto;
+    margin-left: auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+</style>
+<nav class="navbar .navbar-fixed-top">
+  <div class="container-nav">
+    <a href="<%= instagram_index_path%>">
+      <img src="<%= "/image/logo.png"%>" >
+    </a>
+    
+    <form class="navbar-form navbar-center" action="/">
+      <div class="input-group">
+        <input type="text" class="form-control nav-search" placeholder="검색" name="search">
+      </div>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <%if current_user.present?%>
+        <ul><%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "text-black" %> </a></ul>
+      <%else%>
+        <ul><%=link_to "로그인", new_user_session_path, class:"text-black" %> </a></ul>
+      <%end%>
+      
+    </ul>
+  </div>
+</nav>
+
