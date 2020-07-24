@@ -6,7 +6,7 @@ class InstagramController < ApplicationController
 				array.push(f.target_id)
 			end
 			array.push(current_user.id)
-			@post=Post.where(user_id:array)
+			@post=Post.where(user_id:array).order('created_at DESC')
 	
 		end
 	end

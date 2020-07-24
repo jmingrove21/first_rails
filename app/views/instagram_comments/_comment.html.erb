@@ -3,9 +3,15 @@
 <% if comment %>
   <div class="list-group-item post-content-body-margin" id="comment-<%= comment.id %>">
     <div class="row">
-      <div class="text-weight"><%= comment.user&.email %></div>
+      <div class="text-weight">
+        <%=link_to comment.user.email, instagram_path(comment.user.id), class:"my-user-id-font", style: 'color : black'%>
+      </div>
       &nbsp;
-      <div class="text-content-weight"><%= comment.body %></div>
+      <div class="text-content-weight">
+        <%= comment.body %>
+      </div>
+      <div>
+      </div>
     </div>
   </div>
 <% end %>

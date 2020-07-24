@@ -21,109 +21,117 @@
         font-weight:bold;
     }
     .w-32{
-        position: relative;
-        width: 32px;
-        height: 32px;
-        overflow: hidden;
+			position: relative;
+			width: 32px;
+			height: 32px;
+			overflow: hidden;
     }
     .clip-circle-15 {
-        clip-path: circle(15px at center);
-        background:red;
+			clip-path: circle(15px at center);
+			background:red;
     }
     .img-div{
-        position: relative;
-        width: 614px;
-        overflow: hidden;
+			position: relative;
+			width: 614px;
+			overflow: hidden;
     }
     .img-inner{
-     top: -9999px;
-     left: -9999px;
-     right: -9999px;
-     bottom: -9999px;
-     margin: auto;
+			top: -9999px;
+			left: -9999px;
+			right: -9999px;
+			bottom: -9999px;
+			margin: auto;
     }
     .img-resize{
-        max-width: 100%;
-        max-height: 100%;
-        display: block;
+			max-width: 100%;
+			max-height: 100%;
+			display: block;
     }
     .img-resize-default{
-        max-width: 80%;
-        max-height: 80%;
-        display: block;
+			max-width: 80%;
+			max-height: 80%;
+			display: block;
     }
     .card-title{
-        width:614px;
-        padding: 14px 16px 14px 16px;
-        margin: 0px;
-        border-bottom-width:1px;
-    }
+			width:614px;
+			padding: 14px 16px 14px 16px;
+			margin: 0px;
+			border-bottom-width:1px;
+		}
     .text-weight{
-        font-size:14px;
-        font-weight:600;
+			font-size:14px;
+			font-weight:600;
         
     }
     .text-content-weight{
-        font-size:14px;
+			font-size:14px;
     }
     .post-content-body-margin{
-        align-items:center;
-        margin-bottom:4px;
+			align-items:center;
+			margin-bottom:4px;
     }
     .card-text{
-        padding-left:16px;
+			padding-left:16px;
     }
+		.card-time{
+			padding-left:16px;
+			text-align:left;
+			font-size:10px;
+			color:#8e8e8e;
+			margin-top:4px;
+			margin-bottom:4px;
+		}
     .comment-form-style{
-        width:614px;
-        height:55px;
-        border-top: 1px solid rgba(var(--ce3,239,239,239),1);
-        padding-left: 16px;
-        padding-right: 16px;
-        margin-top: 4px;
-        display: flex;
-        align-items:center;
+			width:614px;
+			height:55px;
+			border-top: 1px solid rgba(var(--ce3,239,239,239),1);
+			padding-left: 16px;
+			padding-right: 16px;
+			margin-top: 4px;
+			display: flex;
+			align-items:center;
 
     }
     .comment-form-body{
-        width:530px;
-        height:24px;
-        border: 0;
-        padding:0px;
-        outline: 0px;  
+			width:530px;
+			height:24px;
+			border: 0;
+			padding:0px;
+			outline: 0px;  
 
-        border: none;
-        overflow: auto;
-        outline: none;
+			border: none;
+			overflow: auto;
+			outline: none;
 
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
 
-        resize: none; 
+			resize: none; 
     }
     .comment-submit-button-style{
-        width:40px;
-        height:18px;
-        margin:0px;
-        padding:0px;
-        background:white;
-        border-radius: 0px;
-        border:none;
-        color:blue;
-        background-color:white;
-        text-align: center;
-        color:#0095f6;
-        box-shadow:none;
-        text-shadow:none;
-        line-height:0;
-        transition:none;
-        text-decoration: none;
+			width:40px;
+			height:18px;
+			margin:0px;
+			padding:0px;
+			background:white;
+			border-radius: 0px;
+			border:none;
+			color:blue;
+			background-color:white;
+			text-align: center;
+			color:#0095f6;
+			box-shadow:none;
+			text-shadow:none;
+			line-height:0;
+			transition:none;
+			text-decoration: none;
     }
     
     form input[type=submit]:not(.disabled):hover, form input[type=button]:not(.disabled):hover, form button:not(.disabled):hover {
-        background-color:white;
-        background-image:none;
-        color:#0095f6;
+			background-color:white;
+			background-image:none;
+			color:#0095f6;
 
     }
 }
@@ -141,7 +149,7 @@
         </div> 
         <div class="card-item-margin text-weight">
             <!-- user info section -->
-            <%=user[0].email%>            
+            <%=link_to user[0].email, instagram_path(user[0].id), class:"my-user-id-font", style: 'color : black'%>         
         </div>
     </div>
     <div>
@@ -182,7 +190,8 @@
     </div>
     <div class="card-text text-left card-inline-item card-item-margin  post-content-body-margin" >
         <div class="text-left text-weight"> 
-            <%=user[0].email%>
+            <%=link_to user[0].email, instagram_path(user[0].id), class:"my-user-id-font", style: 'color : black'%>         
+
         </div>
         &nbsp;
         <div class=" text-left text-content-weight">
@@ -192,8 +201,27 @@
     </div>
     
     <div class = "card-text  text-left">
-        <%=render 'instagram_comments/comments' , comments: post.comments.order(created_at: :desc)%>
+        <%=render 'instagram_comments/comments' , comments: post.comments.order(created_at: :asc)%>
     </div>
+		<div class="card-time">
+			<%time=TimeDifference.between(Time.now,post.created_at).in_general%>
+			<%if time.values[0] != 0%>
+				<%=time.values[0]%>년 전
+			<% elsif time.values[1]!=0%>
+				<%=time.values[1]%>달 전
+			<% elsif time.values[2]!=0%>
+				<%=time.values[2]%>주 전
+			<% elsif time.values[3]!=0%>
+				<%=time.values[3]%>일 전
+			<% elsif time.values[4]!=0%>
+				<%=time.values[4]%>시간 전
+			<% elsif time.values[5]!=0%>
+				<%=time.values[5]%>분 전
+			<% else %>
+				<%=time.values[6]%>초 전
+			<% end %>
+    
+		</div>
     <div>
         <%=render 'instagram_comments/form', comment: Comment.new, post:post, user: current_user%>
     </div>
