@@ -1,3 +1,2 @@
 $("#comment_body").val("");
-alert("댓글!");
-$(".list-group-comment").prepend("<%= j(render('instagram_comments/comment', comment: @comment)) %>")
+$(".list-group-comment").append("<%= j(render('instagram_comments/comment', comment: @comment)) %>")

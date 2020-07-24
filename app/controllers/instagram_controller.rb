@@ -6,7 +6,7 @@ class InstagramController < ApplicationController
 				array.push(f.target_id)
 			end
 			array.push(current_user.id)
-			@post=Post.where(user_id:array).order('created_at DESC')
+			@post=Post.where(user_id:array).order(created_at: :desc)
 	
 		end
 	end
@@ -76,7 +76,7 @@ class InstagramController < ApplicationController
 		User.find_by(id: @post.user_id)
 	end
   def load_post
-		Post.where(user_id: @user.id)
+		Post.where(user_id: @user.id).order(created_at: :desc)
   end
   def load_post_by_id
 		Post.find_by(id: params[:id])
