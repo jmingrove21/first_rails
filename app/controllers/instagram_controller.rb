@@ -60,8 +60,8 @@ class InstagramController < ApplicationController
 			follow.destroy
 		else
 			Follow.create follow_params
-
-    end
+		end
+		render 'onload'
   end
   
   private
