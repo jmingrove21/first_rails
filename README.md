@@ -177,7 +177,7 @@ Gemfile에 추가(gem 'devise') -> bundle install -> rails g devise:install -> r
 
 **current_user**를 통해 사용자가 로그인이 되어있는지를 확인할 수 있다.
 
-### ActionAdmin - 관리자 UI 제공 FW
+### ActiveAdmin - 관리자 UI 제공 FW
 
 설명 : Active Admin is a framework for creating administration style interfaces.
 
